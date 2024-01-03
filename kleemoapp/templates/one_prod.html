@@ -1,0 +1,181 @@
+{% if user.is_authenticated %}
+    {% include "header.html" %}
+{% else %}
+    {% include "header2.html" %}
+{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/one_prod.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/530431ce2c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    
+    <video autoplay loop muted class="background-video">
+        <source src="{% static 'media/TripleBlack.webm'%}" type="video/webm">
+      </video>
+    
+
+    
+            <section id="main-product">
+                <div class="p-pic" style="width: 70px; height: 100px;">
+                    <img src="/media/{{product.product_image}}" alt="Product">
+                </div>
+                <div class="p-name">
+                    <h2>{{product.product_name}}</h2>
+                </div>
+            </section>
+        
+
+
+    
+            <section id="specs">
+                <h2>Product Specs</h2>
+                <div class="s-item">
+                    <div class="s-item1">
+                        <h5>&nbsp;{{field.f1}}&nbsp;</h5>
+                    </div>
+                    <div class="s-item2">
+                        <h5>&nbsp;{{field.f2}}&nbsp;</h5>
+                    </div>
+                    <div class="s-item3">
+                        <h5>&nbsp;{{field.f3}}&nbsp;</h5>
+                    </div>
+                    <div class="s-item4">
+                        <h5>&nbsp;{{field.f4}}&nbsp;</h5>
+                    </div>
+                    <div class="s-item5">
+                        <h5>&nbsp;{{field.f5}}&nbsp;</h5>
+                    </div>
+                    <div class="s-item6">
+                        <h5>&nbsp;{{field.f6}}&nbsp;</h5>
+                    </div>
+                </div>
+                <a href="#compare">
+                    <h4> -</h4>
+                </a>
+            </section>
+        
+
+    
+            <section id="compare">
+                <div class="c-item c-item1">
+                    <div class="c-item1-1">
+                        <form action="search2">
+                            <input type="search" name="search2" id="search2">
+                        </form>
+                    </div>
+                    <div class="c-item1-2 to-compare">
+                        <div class="prod1">
+                            <img src="/media/{{product.product_image}}" alt="Product1">
+                            <h5>{{ product.product_name }}</h5>
+                        </div>
+                        <div class="vs">
+                            <h5><b>VS</b></h5>
+                        </div>
+                        <div class="prod2">
+                            
+                            <img src="{% static 'media/logo.png'%}" alt="Product2"></a>
+                            <form action="{% url 'compare' %}" method="get">
+                                <input type="hidden" name="first_product_name" value="{{ product.product_name }}">
+                                <input type="hidden" name="type" value="{{ type }}">
+                                <select name="2ndproduct">
+                                    {% for rando in rando %}
+                                        {% if rando.product_name != product.product_name %}
+                                            <option value="{{ rando.product_name }}">{{ rando.product_name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <div class="comp-button">
+                                    <input type="submit" value="Compare">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-item c-item2 all-other-compar-button">
+                    <div class="what-to-compare c-item2-1">
+                        <div class="c-item2-1-1">
+                            {% for rando in rando %}
+                            {% if rando.product_name != product.product_name%}
+                            <button class="c-item-flex c-item2-1-1-1">
+                                <div class="prod1">
+                                    <div class="flex-it">
+                                        <img src="/media/{{product.product_image}}" alt="{{ product.product_name }}">
+                                        <h5>&nbsp;{{ product.product_name }}&nbsp;</h5>
+                                    </div>
+                                </div>
+                                <div class="vs">
+                                    <h5><b>VS</b></h5>
+                                </div>
+                                <div class="prod2">
+                                    <div class="flex-it">
+                                        <h5>&nbsp;{{ rando.product_name }}&nbsp;</h5>
+                                        <img src="/media/{{rando.product_image}}" alt="{{ rando.product_name }}">
+                                    </div>
+                                </div>
+                            </button>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+
+    
+            <section id="latest-products">
+                <h2>Company's Latest Products</h2>
+                
+                <div class="latest-mobs">
+                    {% for rando in rando %}
+                    <div class="l-item l-item1">
+                        <br>
+                        <img src="/media/{{rando.product_image}}" alt="{{ rando.product_name }}">
+                        <h6>{{ rando.product_name }}</h6>
+                        <h6>Rs. {{ rando.product_price }}</h6>
+                        <button type="submit">
+                            <h6>-> Compare</h6>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </section>
+        
+    <!-- Add this section at the bottom of your HTML template -->
+
+<section id="product-reviews">
+    <h2>Product Reviews</h2>
+
+    {% if user.is_authenticated %}
+        <!-- Display the review form if the user is authenticated -->
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="user_name" value="{{ user.username }}">
+            <label for="content">Your Review:</label>
+            <textarea name="content" required></textarea>
+            <label for="rating">Rating (1-5):</label>
+            <input type="number" name="rating" min="1" max="5" required>
+            <input type="hidden" name="product_type" value="{{type }}">
+            <input type="hidden" name="product_id" value="{{ product.product_id }}">
+            <button type="submit">Submit Review</button>
+        </form>
+    {% endif %}
+
+</section>
+
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+<link rel="stylesheet" href="{% static 'css/one_prod.css'%}">
+</html>

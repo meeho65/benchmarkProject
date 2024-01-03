@@ -1,0 +1,90 @@
+section {
+    margin-top: 10px;
+}
+
+#dashboard_edit-pf {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 20px;
+    font-size: 25px;
+    margin-top: 20px;
+    column-gap: 10px;
+}
+
+#dashboard_edit-pf h2 {
+    background-color:rgba(7, 22, 36, 0.933);
+    color: rgb(199, 244, 234);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.dashboard {
+    background-image: linear-gradient(rgba(7, 22, 36, 0), rgba(7, 22, 36, 0.933));
+    padding: 50px;
+}
+
+.dashboard i {
+    font-size: 28px;
+    
+}
+
+.dashboard a {
+    text-decoration: none;
+    color: inherit;
+    background-color: rgba(7, 22, 36, 0.933);
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: rgb(199, 244, 234);
+}
+
+.account, .bookmarks, .reviews {
+    display: flex;
+}
+.edit-pf {
+    background-image: linear-gradient(rgba(7, 22, 36, 0), rgba(7, 22, 36, 0.933));
+    padding: 50px;
+    width: 65%;
+}
+.edit-pf h2 {
+    width: fit-content;
+}
+
+.edit-pf form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    width: 100%;
+}
+.edit-pf input {
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.edit-pf input:focus {
+    width: 100%;
+}
+
+.edit-pf button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    background-color: rgb(199, 244, 234);
+    transition: 0.3s;
+    border-radius: 10px;
+    padding: 20px
+}
+.edit-pf button:hover {
+    background-color: rgb(68, 233, 197);
+    cursor: pointer;
+}
+
+.edit-form {
+    display: flex;
+    justify-content: center;
+}
+
+
+

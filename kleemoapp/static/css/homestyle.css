@@ -1,0 +1,184 @@
+/* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 5px;
+    padding: 0;
+  }
+
+  .background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  section {
+    margin-top: 10px;
+  }
+  
+  header {
+    position: relative;
+    background-color: #f5f5f5;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    
+  }
+  
+  main {
+    padding: 20px;
+  }
+
+  #categories-nav {
+    position: sticky;
+    top: 0;
+    font-size: 35px;
+
+  }
+
+  #categories-nav nav {
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+  }
+
+  #categories-nav nav a {
+    padding: 10px;
+    flex: 1;
+    background-color: gray;
+    color: rgb(199, 244, 234);
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: rgba(7, 22, 36, 0.933);
+    border-color: rgb(199, 244, 234);
+    box-shadow: 0 0 10px 5px #48abe0;
+  }
+  
+
+  #banner {
+    width: auto;
+    display: block;
+    padding: 0;
+  }
+
+  #mobile {
+    display: grid;
+    padding: 5px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    backdrop-filter: blur(7px);
+    margin-top: 0;
+    
+  }
+  #mobile .item {
+    display: flex;
+    flex-direction: column;
+    max-width: auto;
+    background-color: white;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 5px #48abe0;
+  }
+
+  #best-seller {
+    display: grid;
+    padding: 5px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    padding: 10px;
+    margin-top: 0;
+    border-radius: 15px;
+    backdrop-filter: blur(7px);
+  }
+  #best-seller .b-item {
+    max-width: auto;
+    background-color: white;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 5px #48abe0;
+  }
+
+  #smart-watches {
+    display: grid;
+    padding: 5px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    padding: 10px;
+    margin-top: 0;
+    border-radius: 15px;
+    backdrop-filter: blur(7px);
+    margin-top: 0;
+  }
+
+  #smart-watches .s-item {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 5px #48abe0;
+  }
+
+  #adbanner {
+    width: auto;
+    display: block;
+    padding: 0;
+  }
+
+  body h1 {
+    
+  }
+  h1 {
+    font-size: 24px;
+    
+  }
+  
+  ul ul {
+    margin-left: 20px;
+  }
+  
+  footer {
+    background-color: #f5f5f5;
+    padding: 10px;
+  }
+  
+  footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  footer ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  footer ul li a {
+    text-decoration: none;
+  }

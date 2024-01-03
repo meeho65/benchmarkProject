@@ -1,0 +1,68 @@
+{% include "header.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/530431ce2c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="{% static 'css/profile_update.css'%}">
+</head>
+
+<body>
+    
+        <div class="popup-form" id="popupForm">
+            <!-- Form content goes here -->
+            <form>
+                <h1>LOG IN</h1>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button style="color: white; background-color: teal;" type="submit">Log In</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html" style="text-decoration: none; color: teal;">Sign up</a></p>
+        </div>
+        </div>
+    </section>
+    <section id="dashboard_edit-pf" class="animate__animated animate__backInUp">
+        <div class="dashboard">
+            <h2>DashBoard</h2>
+            <a href="/profile" class="account">
+                <div class="pf-icon" style="display: flex; align-items: center; padding: 10px;"><i
+                        class="fa-regular fa-user"></i></div>
+                <h6>My Account</h6>
+            </a>
+            <a href="/bookmark" class="bookmarks">
+                <div class="book-icon" style="display: flex; align-items: center; padding: 10px;"><i
+                        class="fa-solid fa-bookmark"></i></div>
+                <h6>My Bookmarks</h6>
+            </a>
+            <a href="/reviews" class="reviews">
+                <div class="rev-icon" style="display: flex; align-items: center; padding: 10px;"><i
+                        class="fa-solid fa-quote-left"></i></div>
+                <h6>My Reviews</h6>
+            </a>
+        </div>
+        <div class="edit-pf">
+            <h2>Change Password</h2>
+            <div class="edit-form">
+                <form method="post" >
+                    {% csrf_token %}
+                    <input type="password" name="previous_password" placeholder="Enter Password">
+                    <input type="password" name="new_password" placeholder="Enter new Password">
+                    <input type="password" name="confirm_new_password" placeholder="Confirm new Password">
+                    <button type="submit">Change Password</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>
+
+

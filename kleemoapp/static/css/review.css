@@ -1,0 +1,141 @@
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  section {
+    margin-top: 10px;
+}
+
+#dashboard_reviews {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 20px;
+    font-size: 25px;
+    margin-top: 20px;
+    column-gap: 10px;
+}
+
+#dashboard_reviews h2 {
+    background-color:rgba(7, 22, 36, 0.933);
+    color: rgb(199, 244, 234);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.dashboard {
+    padding: 50px;
+}
+
+.dashboard i {
+    font-size: 28px;
+    
+}
+
+.dashboard a {
+    text-decoration: none;
+    color: inherit;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: rgb(199, 244, 234);
+}
+
+.account, .bookmarks, .d_reviews {
+    display: flex;
+}
+
+.d_reviews {
+    background-color: rgb(14, 48, 80);
+}
+
+.r_reviews {
+    padding: 50px
+}
+
+.review {
+    display: flex;
+    margin-top: 5px;
+}
+
+.reviews .icon {
+    display: flex; 
+    align-items: center;
+    max-height: 50px; 
+    font-size: 35px; 
+    padding:20px;
+    color: rgb(199, 244, 234);
+    background-color:#007177;
+    border-radius: 10px;
+}
+.reviews p {
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 18px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.r_reviews h2 {
+    color: rgb(199, 244, 234);
+    background-color: rgba(7, 22, 36, 0.933);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+/* Add this at the end of your existing CSS */
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .background-video {
+        object-fit: contain; /* Adjust as needed for your design */
+    }
+
+    #header {
+        font-size: 20px;
+    }
+
+    .popup-form {
+        width: 80%;
+        max-width: 400px;
+    }
+
+    #dashboard_reviews {
+        flex-direction: column;
+    }
+
+    .dashboard {
+        padding: 20px;
+    }
+
+    .dashboard i {
+        font-size: 20px;
+    }
+
+    .r_reviews {
+        padding: 20px;
+    }
+
+    .review {
+        flex-direction: column;
+    }
+
+    .reviews .icon {
+        max-height: unset;
+        font-size: 25px;
+    }
+
+    .reviews p {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

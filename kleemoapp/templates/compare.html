@@ -1,0 +1,112 @@
+{% if user.is_authenticated %}
+    {% include "header.html" %}
+{% else %}
+    {% include "header2.html" %}
+{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Comparison Website - Compare</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'media/logo.png'%}">
+  <link rel="stylesheet" href="{% static 'css/compstyle.css'%}">
+</head>
+<body>
+  <main>
+    <video autoplay loop muted class="background-video">
+        <source src="{% static 'media/TripleBlack.webm'%}" type="video/webm">
+      </video>
+        <section id="compare">
+          <div class="product">
+            <div class="image">
+            <img src="/media/{{data2.product.product_image}}" alt="Product1" width="300px">
+            </div>
+            <ul>
+              <li> {{ data2.product.product_name }}<li>
+              {% for sub_key,sub_value in data2.field.items %}
+              <li> {{ sub_value }}<li>
+          {% endfor %}
+          <li>Rs.{{ data2.product.product_price }}<li>
+            </ul>
+          </div>
+          <div class="vs"><h1>VS</h1>
+          </div>
+          <div class="product">
+            <div class="image">
+            <img src="/media/{{data.product.product_image}}" alt="Product1" width="300px">
+            </div>
+            <ul>
+              <li> {{ data.product.product_name }}<li>
+              {% for sub_key,sub_value in data.field.items %}
+              <li> {{ sub_value }}<li>
+          {% endfor %}
+          <li>Rs.{{ data.product.product_price }}<li>
+            </ul>
+          </div>
+        </section>
+  </main>
+  <main>
+    <section id="val-n-senti">
+        <div class="graph-repres">
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+            <script>
+              const xValues = ['jan','feb','march','april','may','june','july','aug','sep','oct','nov','dec'];
+            
+              
+              const chartData = {
+                "{{ data2.product.product_name }}": {{ data2.product.market_share }},
+                "{{ data.product.product_name }}": {{ data.product.market_share }}
+              };
+              
+              new Chart("myChart", {
+                type: "line",
+                data: {
+                  labels: xValues,
+                  datasets: Object.keys(chartData).map((key, index) => ({
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: index === 0 ? "rgba(0,255,255,1.0)" : "rgba(255,255,255,1.0)",
+                    borderColor: index === 0 ? "rgba(255,0,255,0.75)" : "rgba(0,255,0,0.75)",
+                    data: chartData[key]
+                  }))
+                },
+                options: {
+                  legend: {display: true},
+                  scales: {
+                    yAxes: [
+                      {ticks: {min: 0, max:3}},
+                    ],
+                  }
+                }
+              });
+              
+            </script>
+            
+        </div>
+        <div class="market-details">
+            <table>
+                <tr>
+                    <th>Market Share</th>
+                    <td>1.03%</td>
+                    <td>{{ data2.product.product_description }}</td>
+                    <td>1.36%</td>
+                    <td>{{ data.product.product_description }}</td>
+                </tr>
+                <tr>
+                    <th>User Rating</th>
+                    <td>51%</td>
+                    <td>{{ data2.product.product_description }}</td>
+                    <td>57%</td>
+                    <td>{{ data.product.product_description }}</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+  </main>
+</body>
+
+</html>

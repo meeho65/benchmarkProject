@@ -1,0 +1,43 @@
+{% include "header2.html"%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compit Sign up</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
+<body>
+  <main>
+    <video autoplay loop muted class="background-video">
+      <source src="{% static 'media/TripleBlack.webm'%}" type="video/webm">
+    </video>
+
+    <section id="signup" class="rectangle">
+      <div class="inner-rectangle">
+        <h1>SIGN UP</h1>
+        <form method="post">
+          {% csrf_token %}
+
+          <input type="text" placeholder="First Name" name="fname" id="fname">
+
+          <input type="text" placeholder="Last Name" name="lname" id="lname">
+
+          <input type="text" placeholder="Username" name="username" id="username">
+  
+          <input type="email" placeholder="Email or Phone" name="email" id="email">
+  
+          <input type="password" placeholder="Password" id="password1" name="password1">
+  
+          <input type="password" placeholder="Confrom Password" id="password2" name="password2">
+          <button style="color: white; background-color: teal;" type="submit">Sign Up</button>
+        </form>   
+        <p style="color: {{color}};">&nbsp;&nbsp;&nbsp;&nbsp;{{msg}}&nbsp;&nbsp;&nbsp;&nbsp;<a href="/login" style="text-decoration: none; color: teal;">Log in</a></p>
+        <br> &nbsp;&nbsp;&nbsp;<button><a href="/admin" style="text-decoration: none; color: teal;">Admin Panel</a></button>
+        &nbsp; &nbsp;<button><a href="/home" style="text-decoration: none; color: teal;">Guest</a></button>
+    </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{% if user.is_authenticated %}
+    {% include "header.html" %}
+{% else %}
+    {% include "header2.html" %}
+{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meo-Kleemo</title>
+  <link rel="stylesheet" href="{% static 'css/homestyle.css'%}">
+</head>
+<body>
+
+  <video autoplay loop muted class="background-video">
+    <source src="{% static 'media/TripleBlack.webm'%}" type="video/webm">
+  </video>
+
+    <section id="categories-nav">
+        <nav>
+            <a href="#mobile">
+                <div class="cater" style="display: flex;">
+                  <i class="fa-solid fa-mobile"></i>
+                  <div style="margin-left: auto; font-size: 30px"> MOBILES</div>
+                </div>
+                </a>
+
+            <a href="#best-seller">
+              <div class="cater" style="display: flex;">
+                <i class="fa-solid fa-laptop"></i>
+                <div style="margin-left: auto; font-size: 30px"> LAPTOPS</div>
+              </div>
+            </a>
+
+            <a href="#smart-watches">
+              <div class="cater" style="display: flex;">
+                <i class="fa-solid fa-clock"></i>
+                <div style="margin-left: auto; font-size: 30px"> SMARTWATCHES</div>
+              </div>
+
+            </a>
+            
+        <!-- More categories... -->
+        </nav>
+      
+
+    </section>
+
+    <section id="banner">
+      {% comment %} add banner here {% endcomment %}
+    </section>
+
+    <h1 style="padding: 10px; background-color: rgba(7, 22, 36, 0.933); border-top-right-radius: 10px; border-top-left-radius: 10px; margin-bottom: 0; color: rgb(199, 244, 234);">Mobiles</h1>
+    <section id="mobile">
+      {% for product in product %}
+      <div class="item">
+        <a href="{% url 'oneProd' type="mobile" product_name=product.product_name %}"><img src="/media/{{product.product_image}}" alt="{{ product.product_name }}" width="13%" height="20%"></a>
+        <div><h4>Rs. {{ product.product_price }}</h4></div>
+        <div><h1>{{ product.product_name }}</h4></div>
+      </div>
+    {% endfor %}
+    </section>
+
+    <h1 style="padding: 10px; background-color: rgba(7, 22, 36, 0.933); border-top-right-radius: 10px; border-top-left-radius: 10px; margin-bottom: 0; color: rgb(199, 244, 234);">Laptops</h1>
+    <section id="best-seller">
+      {% for laptopproduct in laptopproduct %}
+      <div class="b-item b-item1">
+        <a href="{% url 'oneProd' type="laptop" product_name=laptopproduct.product_name  %}"><img src="/media/{{laptopproduct.product_image}}" alt="{{ laptopproduct.product_name }}" width="53%" height="60%"></a>
+        <div><h4>Rs. {{ laptopproduct.product_price }}</h4></div>
+        <div><h1>{{ laptopproduct.product_name }}</h4></div>
+      </div>
+    {% endfor %}
+    </section>
+
+    <h1 style="padding: 10px; background-color: rgba(7, 22, 36, 0.933); border-top-right-radius: 10px; border-top-left-radius: 10px; margin-bottom: 0; color: rgb(199, 244, 234);">Smart Watches</h1>
+    <section id="smart-watches">
+      {% for watches in watches %}
+      <div class="s-item s-item1">
+        <a href="{% url 'oneProd' type="watch" product_name=watches.product_name %}"><img src="/media/{{watches.product_image}}" alt="{{ watches.product_name }}" width="53%" height="75%"></a>
+        <div><h4>Rs. {{ watches.product_price }}</h4></div>
+        <div><h1>{{ watches.product_name }}</h4></div>
+      </div>
+    {% endfor %}
+    </section>
+
+    <section id="adbanner">
+        {% comment %} <img src="{% static 'media/adbanner.jpg'%}" alt="" width="100%" height="100%"> add banner{% endcomment %}
+    </section>
+
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Press & Blog</a></li>
+        <li><a href="#">Instalments Plan</a></li>
+        <li><a href="#">Terms & Condition</a></li>
+        <li><a href="#">Warranty Center</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("categories-nav");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+    </script>
+</body>
+</html>

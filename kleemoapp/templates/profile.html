@@ -1,0 +1,56 @@
+{% include "header.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/530431ce2c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="{% static 'css/profile.css'%}">
+</head>
+<body>
+    <section id="pf">
+        <div class="set-icon" style="display: flex; justify-content: end; font-size: 25px;">
+            <i class="fa-solid fa-gear" ></i>
+        </div>
+        <div class="pf-info">
+            <div class="pf-icon">
+                <i class="fa-regular fa-user" style="padding-right: 10px; padding-left: 10px;"></i>
+            </div>
+            <div class="info">
+                <h3>{{user.first_name}}&nbsp;{{user.last_name}}</h3>
+                <p style="margin-top: 30px;">PriceWise club Member</p>
+                <a href="/profile_update" ><button>Change Password</button></a>    
+                <a href="/profile_update2" ><button>Update Profile</button></a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="bookmark_reviews">
+        <div class="bookmark">
+            <a href="/bookmark">
+            <div class="book_icon">
+                <i class="fa-solid fa-bookmark"></i>
+            </div>
+            <div class="t_books">
+                <h3>Bookmarks</h3>
+            </div>
+        </div>
+    </a>
+        <a href="/reviews"> <div class="reviews">
+            <div class="rev_icon">
+                <i class="fa-solid fa-quote-left"></i>
+            </div>
+            <div class="t_revs">
+                <h3>Reviews</h3>
+            </div>
+        </a>
+        </div>
+    </section>
+</body>
+</html>

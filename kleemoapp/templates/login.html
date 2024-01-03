@@ -1,0 +1,35 @@
+{% include "header2.html"%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+  
+</head>
+<body>
+   <main>
+    <video autoplay loop muted class="background-video">
+      <source src="{% static 'media/TripleBlack.webm'%}" type="video/webm">
+    </video>  
+    <section id="login" class="rectangle" >
+      <div class="inner-rectangle">
+        <h1>LOG IN</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter Username" id="username" name="username">
+    
+            <input type="password" placeholder="Password" id="password" name="pass">
+          <button style="color: white; background-color: teal;" type="submit">Log In</button>
+        </form>
+        <p style=" color: {{color}};">{{msg}} <a href="/" style="text-decoration: none; color: teal;">Sign up</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
